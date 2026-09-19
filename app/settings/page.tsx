@@ -1,0 +1,12 @@
+import PageHeader from "@/components/PageHeader";
+
+export default function SettingsPage() {
+  return <><PageHeader eyebrow="Workspace" title="Settings" description="생성 기본값과 공급자 연결 상태를 확인합니다." />
+    <div className="grid grid-cols-[1fr_360px] gap-6"><div className="space-y-6"><section className="panel p-6"><h2 className="font-semibold">Project defaults</h2><p className="mt-1 text-xs text-slate-500">새 프로젝트에 자동으로 적용되는 값입니다.</p><div className="mt-5 grid grid-cols-2 gap-4"><label><span className="label">Default platform</span><select className="input"><option>YouTube Shorts</option><option>Instagram Reels</option><option>TikTok</option></select></label><label><span className="label">Default aspect ratio</span><select className="input"><option>9:16</option><option>1:1</option><option>16:9</option></select></label><label><span className="label">Default duration</span><select className="input"><option>30 seconds</option><option>45 seconds</option><option>60 seconds</option></select></label><label><span className="label">Language</span><select className="input"><option>Korean</option><option>English</option></select></label></div><button className="primary mt-5">Save defaults</button></section>
+      <section className="panel p-6"><h2 className="font-semibold">Appearance</h2><div className="mt-4 flex items-center justify-between rounded-xl border border-line p-4"><div><p className="text-sm">Dark interface</p><p className="mt-1 text-xs text-slate-500">현재 디자인에 최적화되어 있습니다.</p></div><span className="rounded-full bg-violet px-3 py-1 text-xs">On</span></div></section></div>
+      <aside className="panel h-fit p-6"><h2 className="font-semibold">Generation providers</h2><p className="mt-2 text-xs leading-relaxed text-slate-500">공급자는 나중에 실제 AI 서비스로 교체할 수 있습니다.</p><Provider type="Image" /><Provider type="Video" /><div className="mt-5 rounded-xl border border-mint/20 bg-mint/5 p-4 text-xs leading-relaxed text-slate-400"><b className="text-mint">Mock mode active</b><br />외부 API 호출이나 비용이 발생하지 않습니다.</div></aside>
+    </div>
+  </>;
+}
+
+function Provider({ type }: { type: string }) { return <div className="mt-5 rounded-xl border border-line p-4"><div className="flex items-center justify-between"><span className="text-sm">{type} provider</span><span className="chip text-mint">Connected</span></div><p className="mt-2 text-sm font-semibold">Mock {type} Provider</p><button className="mt-3 text-xs text-violet">Configure later →</button></div>; }
